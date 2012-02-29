@@ -18,8 +18,6 @@ alias vim='reattach-to-user-namespace /usr/local/bin/vim'
 alias vi='reattach-to-user-namespace /usr/local/bin/vim'
 alias tmux='TERM=screen-256color-bce tmux'
 
-export EC2_HOME=~/.ec2
-export PATH=$PATH:$EC2_HOME/bin
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
 
 # Path to your oh-my-zsh configuration.
