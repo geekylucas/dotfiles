@@ -12,12 +12,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="/usr/local/bin:$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-alias vim='reattach-to-user-namespace /usr/local/bin/vim'
-alias vi='reattach-to-user-namespace /usr/local/bin/vim'
-alias tmux='TERM=screen-256color-bce tmux'
-
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
 
 # Path to your oh-my-zsh configuration.
@@ -27,3 +23,30 @@ ZSH_THEME="cloud"
 ## Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 ## Example format: plugins=(rails git textmate ruby lighthouse)
 source $ZSH/oh-my-zsh.sh
+
+#alias tmux='TERM=screen-256color-bce tmux'
+alias vi=vim
+vim()
+{
+  # Save current stty options.
+  local STTYOPTS="$(stty -g)"
+ 
+  # Disable intercepting of ctrl-s and ctrl-q as flow control.
+  stty stop '' -ixoff -ixon
+ 
+  # Execute vim.
+  vim_command "$@"
+ 
+  # Restore saved stty options.
+  stty "$STTYOPTS"
+}
+ 
+vim_command()
+{
+  if (( $+commands[reattach-to-user-namespace] )); then
+    # See: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
+    command reattach-to-user-namespace vim "$@"
+  else
+    command vim "$@"
+  fi
+}
