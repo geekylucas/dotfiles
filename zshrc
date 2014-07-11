@@ -12,9 +12,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-export PATH="/usr/local/bin:$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+export PATH=/usr/local/bin:$PATH
+chruby ruby-2.1.1
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
