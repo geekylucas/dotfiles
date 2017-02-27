@@ -1,0 +1,7 @@
+[credential]
+	helper = osxkeychain
+[user]
+	name = Lucas Chan
+	email = lucas-github@lucaschan.com
+[core]
+	editor = /usr/local/bin/vim
