@@ -5,4 +5,7 @@ if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
   source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
 fi
 
+# golang
+export GOPATH="$HOME/go"
+
 export PATH=$PATH:~/go/bin
